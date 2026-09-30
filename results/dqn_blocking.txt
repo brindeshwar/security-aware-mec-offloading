@@ -1,0 +1,12 @@
+      Ep    AvgRew       Loss      Eps
+  ------  --------  ---------  -------
+       0     -9.00    0.00000   0.7857
+     200     10.49    0.55560   0.0099
+     400     13.47    0.73872   0.0099
+     600     13.67    0.54200   0.0099
+     799     14.40    0.34344   0.0099
+
+DQN offload rate on 20,000 uniformly sampled states (state = [battery, complexity, vulnerability, bandwidth, server_load])
+  vulnerability > 0.66 (HIGH)                      n=  6722  offloaded: 1.1%
+  vulnerability > 0.33 (MED+HIGH)                  n= 13428  offloaded: 3.1%
+  HIGH vuln AND otherwise favourable to offload    n=  1329  offloaded: 5.3%

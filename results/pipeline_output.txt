@@ -1,0 +1,84 @@
+D:\Major\mec-offloading\simulation\adaptive_offloading_full_pipeline.py:916: UserWarning: FigureCanvasAgg is non-interactive, and thus cannot be shown
+  plt.show()
+====================================================================
+  ADAPTIVE COMPUTATION OFFLOADING — Full Pipeline (Phases 1–5)
+====================================================================
+
+[Phase 1] Binary decision threshold...
+          Break-even bandwidth: 13.71 Mbps
+
+[Phase 2] N-Queens benchmark (~15s)...
+          N=1  local=0.0005s  remote=0.0500s  → LIGHT
+          N=2  local=0.0018s  remote=0.0502s  → LIGHT
+          N=3  local=0.0044s  remote=0.0504s  → LIGHT
+          N=4  local=0.0079s  remote=0.0508s  → LIGHT
+          N=5  local=0.0048s  remote=0.0505s  → LIGHT
+          N=6  local=0.0536s  remote=0.0554s  → LIGHT
+          Crossover: N=>6
+
+[Phase 5a] ODG vulnerability scoring...
+          Safe to offload (6): ['calculateBMI', 'sortLeaderboard', 'renderChart', 'encryptData', 'syncToCloud', 'runAIInference']
+          Must stay local (6): ['getUserID', 'getHeartRate', 'getMedicalRecord', 'getLocation', 'analyzeHealth', 'buildReport']
+
+[Phase 3] Training baseline Q-Learning (500 eps)...
+          Peak Q-value: 12.05
+
+[Phase 5b] Training security-aware Q-Learning (600 eps)...
+          Peak Q-value: 16.94
+
+[Phase 3 vs 5b] Decision comparison (same tasks):
+
+  Case                                        Phase 3    Phase 5b  Note
+  ────────────────────────────────────────  ──────────  ──────────  ─────────────────────────
+  Full bat, HEAVY, LOW vuln, good BW          OFFLOAD       LOCAL  ↻ changed
+  Full bat, HEAVY, MED vuln, good BW          OFFLOAD       LOCAL  ⚠ BLOCKED (security)
+  Full bat, HEAVY, HIGH vuln, good BW         OFFLOAD       LOCAL  ⚠ BLOCKED (security)
+  LOW battery, HEAVY, safe task                 LOCAL       LOCAL  ✔ same
+  Good bat, LIGHT task, safe                    LOCAL       LOCAL  ✔ same
+  Good bat, HEAVY, safe, BAD BW                 LOCAL       LOCAL  ✔ same
+  Full bat, HEAVY, HIGH vuln, excellent BW    OFFLOAD       LOCAL  ⚠ BLOCKED (security)
+
+[Phase 4] Lyapunov queue stability...
+          Greedy final queue : 297 (unbounded under arrival > capacity)
+          Lyapunov max queue : 21 (bounded by throttle threshold)
+          Tasks forced local : 276
+
+[Phase 5c] Training DQN (800 eps)...
+      Ep    AvgRew       Loss      Eps
+  ------  --------  ---------  -------
+       0     -9.00    0.00000   0.7857
+     200     10.49    0.55560   0.0099
+     400     13.47    0.73872   0.0099
+     600     13.67    0.54200   0.0099
+     799     14.40    0.34344   0.0099
+
+[Phase 5c] Final avg reward (last 50): 14.40
+
+[Phase 5c] Sample DQN decisions (continuous state):
+    Bat   Cmx   Vln    BW   Srv     Action  Q[loc]  Q[off]
+    0.9   0.9  0.05   0.9   0.2  → OFFLOAD    4.72    6.79
+    0.9   0.9  0.80   0.9   0.2  → OFFLOAD    4.87    5.09
+    0.1   0.9  0.05   0.9   0.2    → LOCAL    2.96    1.88
+    0.9   0.2  0.05   0.9   0.2    → LOCAL    8.14    6.72
+    0.9   0.9  0.05   0.2   0.2    → LOCAL   13.32    7.68
+    0.7   0.7  0.15   0.7   0.4  → OFFLOAD    5.54    5.60
+
+====================================================================
+  FULL PIPELINE SUMMARY
+====================================================================
+  Phase 1   Break-even bandwidth        : 13.7 Mbps
+  Phase 2   Crossover N                 : >6
+  Phase 5a  Objects safe to offload      : 6/12
+  Phase 5a  Objects must stay local      : 6/12
+  Phase 3   Baseline Q convergence         : ~350 episodes (read from reward curve)
+  Phase 5b  Secure Q convergence           : ~400 episodes (read from reward curve)
+  Phase 4   Lyapunov queue bounded at    : ≤21 tasks
+  Phase 4   Greedy queue (unstable)      : 297 tasks
+  Phase 5c  DQN avg reward (last 50)     : 14.40
+
+  ✔ ODG gate keeps sensitive objects local (by construction); run evaluate_dqn_blocking.py for the DQN rate
+  ✔ Continuous-state DQN trained (simulation only; no real-device evaluation)
+====================================================================
+
+[Plots] Generating full dashboard...
+[Plots] Saved → adaptive_offloading_full_pipeline.png
