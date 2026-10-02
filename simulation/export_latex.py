@@ -107,8 +107,8 @@ def main():
                 "Agent & All states (\\%) & High vuln.\\ (\\%) & High vuln., favourable (\\%)", rows)
 
     rows = []
-    labels = [("greedy", "Greedy (admit all)"), ("threshold", "Fixed threshold ($\\Theta=20$)")] + \
-             [(f"dpp_V{V}", f"Drift-plus-penalty, $V={V}$") for V in WORD]
+    labels = [("greedy", "Greedy"), ("threshold", "Threshold $\\Theta=20$")] + \
+             [(f"dpp_V{V}", f"DPP, $V={V}$") for V in WORD]
     for k, lab in labels:
         e = s[k]
         rows.append(f"{lab} & {e['mean_q']['mean']:.1f} & {e['max_q']['mean']:.0f} & "
