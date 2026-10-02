@@ -26,13 +26,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 PAPER = os.path.join(HERE, "..", "paper")
 UA = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124 Safari/537.36",
       "Accept": "application/pdf,application/json;q=0.9,*/*;q=0.8"}
-LOCAL_FILES = {   # key -> path of a PDF the author already has
-    "lin2019": r"D:\Major\IEEE paper on computation offloading.pdf",
-    "kiran2020": r"D:\Major\Joint_resource_allocation_and_computation_offloadi.pdf",
-    "kovachev2012": r"D:\Major\Dialnet-FrameworkForComputationOffloadingInMobileCloudComp-4114048.pdf",
-    "barbarossa2013": r"D:\Major\Funems13.pdf",
-    "akherfi2018": r"D:\Major\1488793.pdf",
-}
+# optional: PDFs you already own, as {"bibtex_key": "path/to/file.pdf"} in local_sources.json (gitignored)
+_LOCAL = os.path.join(HERE, "local_sources.json")
+LOCAL_FILES = json.load(open(_LOCAL, encoding="utf-8")) if os.path.exists(_LOCAL) else {}
 REDISTRIBUTABLE = ("cc-by", "cc-by-nc", "cc-by-sa", "cc-by-nc-sa", "cc-by-nd", "cc-by-nc-nd", "cc0", "public-domain")
 RECOMPRESS_OK = ("cc-by", "cc0", "public-domain")      # never alter ND/SA/NC copies
 

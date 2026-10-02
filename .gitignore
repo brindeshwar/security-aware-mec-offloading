@@ -29,3 +29,4 @@ simulation/*.png
 .vscode/
 .DS_Store
 Thumbs.db
+references/local_sources.json
