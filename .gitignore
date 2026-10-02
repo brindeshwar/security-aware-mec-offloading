@@ -1,12 +1,31 @@
+# --- never committed: personal files, old work, tools, papers that may not be redistributed ---
+.local/
+references/local_only/
+references/_tmp.pdf
+
+# --- the paper is not public yet: delete the next line after review to publish paper/ ---
+paper/
+
+# --- python ---
 __pycache__/
 *.pyc
 .venv/
 venv/
+.pytest_cache/
 .ipynb_checkpoints/
+*.egg-info/
+simulation/*.png
+
+# --- latex build output ---
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.toc
+
+# --- editor / OS ---
 .idea/
 .vscode/
-*.egg-info/
 .DS_Store
 Thumbs.db
-simulation/*.png
-.pytest_cache/

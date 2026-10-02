@@ -59,7 +59,11 @@ simulation/
   make_figures.py    draws all figures from the JSON (no numbers typed in)
   export_latex.py    turns the JSON into LaTeX tables/macros
   tests/             pytest checks (13.71 Mbps, 297 vs 21, DPP bound, ODG scores, gates)
-results/             data, figures, tables
+results/
+  data/              results.json (every number in the paper and README)
+  figures/           PDF + PNG, one per figure
+  tables/            LaTeX tables and number macros generated from results.json
+references/          the papers cited, with DOI/licence index (open-access PDFs only)
 ```
 
 The first version of this repository (a single-script pipeline) is in the git history (commit `9a3794c`). This version replaces it with a modular, tested implementation, multiple seeds and baselines.
