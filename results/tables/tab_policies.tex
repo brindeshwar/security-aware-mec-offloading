@@ -1,0 +1,17 @@
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+Policy & Reward/step & Latency (s) & Energy (J) & Offloaded (\%) & High-vuln.\ offl.\ (\%) & Depleted (\%) \\
+\midrule
+Always local & -2.07 $\pm$ 0.02 & 0.87 $\pm$ 0.00 & 0.78 $\pm$ 0.00 & 0 & 0.0 & 69 \\
+Always offload & -4.43 $\pm$ 0.14 & 1.78 $\pm$ 0.04 & 1.19 $\pm$ 0.06 & 100 & 100.0 & 75 \\
+Random & -3.43 $\pm$ 0.10 & 1.28 $\pm$ 0.03 & 1.13 $\pm$ 0.04 & 50 & 50.3 & 80 \\
+Threshold only & -2.36 $\pm$ 0.01 & 1.03 $\pm$ 0.00 & 0.64 $\pm$ 0.01 & 46 & 45.8 & 51 \\
+Threshold + ODG gate & -1.99 $\pm$ 0.02 & 0.90 $\pm$ 0.00 & 0.69 $\pm$ 0.01 & 29 & 0.0 & 57 \\
+Rule pipeline (3 gates) & -1.97 $\pm$ 0.02 & 0.88 $\pm$ 0.00 & 0.69 $\pm$ 0.01 & 26 & 0.0 & 56 \\
+Q-table & -2.42 $\pm$ 0.04 & 0.97 $\pm$ 0.01 & 0.81 $\pm$ 0.02 & 30 & 27.6 & 73 \\
+Q-table + gates & -1.99 $\pm$ 0.03 & 0.85 $\pm$ 0.00 & 0.74 $\pm$ 0.01 & 11 & 0.0 & 63 \\
+DQN & -1.90 $\pm$ 0.02 & 0.84 $\pm$ 0.00 & 0.70 $\pm$ 0.01 & 15 & 0.0 & 60 \\
+DQN + gates (full pipeline) & -1.91 $\pm$ 0.02 & 0.84 $\pm$ 0.01 & 0.71 $\pm$ 0.01 & 14 & 0.0 & 60 \\
+Myopic oracle & -1.89 $\pm$ 0.01 & 0.85 $\pm$ 0.00 & 0.68 $\pm$ 0.01 & 21 & 0.0 & 56 \\
+\bottomrule
+\end{tabular}
