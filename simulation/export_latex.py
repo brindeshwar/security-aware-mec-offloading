@@ -104,7 +104,7 @@ def main():
         rows.append(f"{agent} & {mean(al):.1f} & {mean(hi):.1f} ({min(hi):.1f}--{max(hi):.1f}) & "
                     f"{mean(fav):.1f} ({min(fav):.1f}--{max(fav):.1f}) \\\\")
     write_table("tab_probe.tex", "@{}lccc@{}",
-                "Agent & All states (\\%) & High vuln.\\ (\\%) & High vuln., favourable (\\%)", rows)
+                "Agent & All states (\\%) & High vuln.\\ (\\%) & High vuln., fav.\\ (\\%)", rows)
 
     rows = []
     labels = [("greedy", "Greedy"), ("threshold", "Threshold $\\Theta=20$")] + \
