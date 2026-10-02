@@ -27,9 +27,9 @@ All numbers below come from the code in this repo. Raw output is in [`results/`]
 | Edge queue length | greedy **297** vs. controlled **21** (max) | 100 time slots, arrival 10/slot, capacity 7/slot. The greedy queue grows by 3 per slot, so 297 is 3 x 99 and is a property of the chosen parameters and horizon. The controller admits 4 tasks/slot whenever the queue is at or above 20. |
 | Sensitive objects kept local | **100%** of the sensitive data objects (user ID, medical record, location, heart rate) | Enforced by a hard rule (vulnerability >= 0.4 in code), so this is by construction. |
 | DQN offload rate on high-vulnerability states (> 0.66) | **1.1%** (n = 6,722 random states, seed 42) | The DQN learns this through a reward penalty and is not a guarantee. It is 5.3% when the other conditions favour offloading. See [`results/dqn_blocking.txt`](results/dqn_blocking.txt). |
-| Q-Learning convergence | about 350 episodes | Read off the reward curve (`results/figures/fig03_phase3_convergence.png`); the pipeline's summary prints it as a fixed string, not a computed value. |
+| Tabular Q-Learning training | 500 / 600 single-step updates | The sum of Q-table entries is still rising at the last update (`results/figures/fig03_qlearning_progress.png`), so convergence is **not** shown. |
 
-Figures are in [`results/figures/`](results/figures/), and the combined dashboard is [`results/adaptive_offloading_full_pipeline.png`](results/adaptive_offloading_full_pipeline.png).
+Figures are in [`results/figures/`](results/figures/); `make_figures.py` regenerates most of them. The N-Queens benchmark output is in [`results/nqueens_benchmark.txt`](results/nqueens_benchmark.txt).
 
 ## How to run the simulation
 
@@ -44,6 +44,7 @@ pip install -r requirements.txt
 cd simulation
 python adaptive_offloading_full_pipeline.py      # all phases, about 10-15 s; saves a PNG dashboard
 python evaluate_dqn_blocking.py                  # measures how often the DQN offloads high-vulnerability tasks
+python make_figures.py                           # regenerates the result figures in results/figures
 ```
 
 On a headless machine, set `MPLBACKEND=Agg` first to skip the plot window. Tested on Windows 11 with Python 3.12, NumPy 2.4 and Matplotlib 3.10.
@@ -51,7 +52,7 @@ On a headless machine, set `MPLBACKEND=Agg` first to skip the plot window. Teste
 ## Repository layout
 
 ```
-simulation/   full pipeline (phases 1-5) and the DQN blocking evaluation
+simulation/   full pipeline (phases 1-5), DQN blocking evaluation, figure generation
 results/      pipeline output, DQN blocking measurement, figures
 ```
 

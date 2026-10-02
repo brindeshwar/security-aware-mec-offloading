@@ -494,8 +494,8 @@ def phase4_simulate():
 
 def phase4_plot(ax, greedy_q, lyapunov_q, throttle_events, forced_local):
     slots = range(len(greedy_q))
-    ax.plot(slots, greedy_q,   'r--', lw=2, label=f'Greedy — Unstable (→{greedy_q[-1]})')
-    ax.plot(slots, lyapunov_q, 'b-',  lw=2, label=f'Lyapunov — Stable (max {max(lyapunov_q)})')
+    ax.plot(slots, greedy_q,   'r--', lw=2, label=f'Greedy admission (→{greedy_q[-1]})')
+    ax.plot(slots, lyapunov_q, 'b-',  lw=2, label=f'Threshold controller (max {max(lyapunov_q)})')
     ax.axhline(QUEUE_THRESHOLD, color='black', ls=':', lw=1.5,
                label=f'Stability Threshold={QUEUE_THRESHOLD}')
     shade_start = None
@@ -831,8 +831,8 @@ def run_full_pipeline():
     print(f"  Phase 2   Crossover N                 : {crossover_n or '>6'}")
     print(f"  Phase 5a  Objects safe to offload      : {len(safe_list)}/{len(graph.objects)}")
     print(f"  Phase 5a  Objects must stay local      : {len(local_list)}/{len(graph.objects)}")
-    print(f"  Phase 3   Baseline Q convergence         : ~350 episodes (read from reward curve)")
-    print(f"  Phase 5b  Secure Q convergence           : ~400 episodes (read from reward curve)")
+    print(f"  Phase 3   Baseline Q-table training       : 500 updates (Q-sum still rising; not shown to converge)")
+    print(f"  Phase 5b  Secure Q-table training         : 600 updates (Q-sum still rising; not shown to converge)")
     print(f"  Phase 4   Lyapunov queue bounded at    : ≤{max(lyapunov_q)} tasks")
     print(f"  Phase 4   Greedy queue (unstable)      : {greedy_q[-1]} tasks")
     print(f"  Phase 5c  DQN avg reward (last 50)     : {np.mean(ep_rewards[-50:]):.2f}")
@@ -880,12 +880,12 @@ def run_full_pipeline():
     ax_summ.axis('off')
     summary_lines = [
         ("PHASE 1",  f"Break-even bandwidth = {threshold_bps/1e6:.1f} Mbps"),
-        ("PHASE 2",  f"N-Queens crossover at N={crossover_n or '>6'} — heavy tasks benefit from offload"),
+        ("PHASE 2",  f"N-Queens crossover at N={crossover_n or '>6'} (edge time is modelled, not measured)"),
         ("PHASE 5a", f"ODG scores {len(safe_list)} objects safe, {len(local_list)} must stay local"),
-        ("PHASE 3",  f"Baseline Q-Learning converges ~350 eps — battery-aware only"),
-        ("PHASE 5b", f"Secure Q-Learning: HIGH vuln tasks BLOCKED from offload"),
-        ("PHASE 4",  f"Lyapunov bounds queue ≤{max(lyapunov_q)} vs greedy {greedy_q[-1]} — stable"),
-        ("PHASE 5c", f"DQN handles continuous state (5 inputs) — generalises to unseen conditions"),
+        ("PHASE 3",  f"Baseline Q-Learning: 500 updates, Q-sum still rising"),
+        ("PHASE 5b", f"Secure Q-Learning: learned policy keeps MED/HIGH vuln tasks local"),
+        ("PHASE 4",  f"Threshold controller: max queue {max(lyapunov_q)} vs greedy {greedy_q[-1]} (100 slots)"),
+        ("PHASE 5c", f"DQN over continuous state (5 inputs); trained on synthetic reward rules"),
     ]
     colors_map = {"PHASE 1":"#1f4e79","PHASE 2":"#375623","PHASE 5a":"#6B2C91",
                   "PHASE 3":"#C55A11","PHASE 5b":"#C00000",

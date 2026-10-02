@@ -8,12 +8,12 @@ D:\Major\mec-offloading\simulation\adaptive_offloading_full_pipeline.py:916: Use
           Break-even bandwidth: 13.71 Mbps
 
 [Phase 2] N-Queens benchmark (~15s)...
-          N=1  local=0.0005s  remote=0.0500s  → LIGHT
-          N=2  local=0.0018s  remote=0.0502s  → LIGHT
-          N=3  local=0.0044s  remote=0.0504s  → LIGHT
-          N=4  local=0.0079s  remote=0.0508s  → LIGHT
-          N=5  local=0.0048s  remote=0.0505s  → LIGHT
-          N=6  local=0.0536s  remote=0.0554s  → LIGHT
+          N=1  local=0.0005s  remote=0.0501s  → LIGHT
+          N=2  local=0.0017s  remote=0.0502s  → LIGHT
+          N=3  local=0.0045s  remote=0.0505s  → LIGHT
+          N=4  local=0.0075s  remote=0.0508s  → LIGHT
+          N=5  local=0.0049s  remote=0.0505s  → LIGHT
+          N=6  local=0.0531s  remote=0.0553s  → LIGHT
           Crossover: N=>6
 
 [Phase 5a] ODG vulnerability scoring...
@@ -70,8 +70,8 @@ D:\Major\mec-offloading\simulation\adaptive_offloading_full_pipeline.py:916: Use
   Phase 2   Crossover N                 : >6
   Phase 5a  Objects safe to offload      : 6/12
   Phase 5a  Objects must stay local      : 6/12
-  Phase 3   Baseline Q convergence         : ~350 episodes (read from reward curve)
-  Phase 5b  Secure Q convergence           : ~400 episodes (read from reward curve)
+  Phase 3   Baseline Q-table training       : 500 updates (Q-sum still rising; not shown to converge)
+  Phase 5b  Secure Q-table training         : 600 updates (Q-sum still rising; not shown to converge)
   Phase 4   Lyapunov queue bounded at    : ≤21 tasks
   Phase 4   Greedy queue (unstable)      : 297 tasks
   Phase 5c  DQN avg reward (last 50)     : 14.40
