@@ -33,6 +33,17 @@ REDISTRIBUTABLE = ("cc-by", "cc-by-nc", "cc-by-sa", "cc-by-nc-sa", "cc-by-nd", "
 RECOMPRESS_OK = ("cc-by", "cc0", "public-domain")      # never alter ND/SA/NC copies
 
 
+def file_stem(n, title, limit=110):
+    """File name stem: citation number + the paper's title (cut at a word boundary), e.g. 01_Mobile_cloud_..."""
+    words = re.sub(r"[^A-Za-z0-9 \-]", "", title).split()
+    out = f"{n:02d}"
+    for w in words:
+        if len(out) + 1 + len(w) > limit:
+            break
+        out += "_" + w
+    return out
+
+
 def get(url, binary=False, timeout=60):
     req = urllib.request.Request(url, headers=UA)
     data = urllib.request.urlopen(req, timeout=timeout).read()
@@ -179,8 +190,7 @@ def main():
     tmp = os.path.join(HERE, "_tmp.pdf")
     for n, key in enumerate(order, 1):
         b = bib[key]
-        first = re.split(r"\s+and\s+|,", b["author"])[0].split()[-1] if b["author"] else key
-        stem = f"{n:02d}_{first}_{b['year']}"
+        stem = file_stem(n, b["title"])
         rec = dict(n=n, key=key, stem=stem, **b, status="missing", folder=None, license="", source="",
                    size_kb=None, pages=None, note="")
         print(f"[{n:02d}] {key}: ", end="", flush=True)

@@ -53,22 +53,44 @@ with open(os.path.join(HERE, "INDEX.md"), "w", encoding="utf-8") as f:
             "open access, Semantic Scholar/OpenAlex open-access links). No shadow libraries were used. "
             "`python fetch_references.py` repeats the search.\n")
 
+# Hand-checked details for papers that could not be fetched (re-search done 2026-10-04)
+HINTS = {
+    "liu2024dep": ("**open access** (SpringerOpen)",
+                   "Free to download in a browser (the site blocks scripts): "
+                   "[article page](https://link.springer.com/article/10.1186/s13677-024-00701-0) "
+                   "(click *Download PDF*), "
+                   "[direct PDF](https://link.springer.com/content/pdf/10.1186/s13677-024-00701-0.pdf), "
+                   "[DOAJ record](https://doaj.org/article/46e89a34390a423182b234220e3797c9), "
+                   "[ResearchGate](https://www.researchgate.net/publication/383791431_Dependency-aware_online_task_offloading_based_on_deep_reinforcement_learning_for_IoV)."),
+    "zhang2025": ("paywalled; **no free legal copy found**",
+                  "OpenAlex lists it as closed and neither Semantic Scholar, CORE nor arXiv has a copy. Options: "
+                  "(1) read it through institutional access (Manipal University Jaipur library -> SpringerLink): "
+                  "[article page](https://link.springer.com/article/10.1007/s12083-025-02101-w), "
+                  "[PDF](https://link.springer.com/content/pdf/10.1007/s12083-025-02101-w.pdf); "
+                  "(2) email the corresponding author (address on the article page) and ask for the accepted "
+                  "manuscript, which authors are generally allowed to share; "
+                  "(3) the abstract and metadata are public, so the paper can be cited without the PDF. "
+                  "Authors: X. Zhang, C. Fang, Z. Bai, L. Zhang, P. Wang, Z. Cao; "
+                  "Peer-to-Peer Netw. Appl. 18(6), article 288, 26 Sep 2025."),
+}
+
 with open(os.path.join(HERE, "MISSING.md"), "w", encoding="utf-8") as f:
-    f.write("# Papers not obtained automatically\n\n")
-    f.write("These could not be downloaded by script. Most publisher sites block automated downloads, so the ones "
-            "marked **open access** can simply be saved from a normal browser. For the others, use an institutional "
-            "login (for example the Manipal University Jaipur library: IEEE Xplore, ACM Digital Library, "
-            "ScienceDirect, SpringerLink) or ask the authors for a copy. Save a PDF as "
-            "`references/local_only/<number>_<Author>_<Year>.pdf` (not committed) unless its licence allows "
-            "redistribution.\n\n")
+    f.write("# Papers not in the collection\n\n")
+    if not miss:
+        f.write("All cited papers are in the collection.\n")
+    f.write("These could not be downloaded by script (most publisher sites block automated downloads). After saving "
+            "a PDF from a browser, put it in any folder and run `python ingest_downloads.py <folder>`: it matches "
+            "the file to the paper, files it under `open_access/` or `local_only/` by licence, renames it with the "
+            "paper's title and updates the index (then run `python build_index.py`).\n\n")
     f.write("| # | Paper | DOI | Access | Where to get it |\n|---|---|---|---|---|\n")
     for r in miss:
-        if r.get("is_oa"):
+        if r["key"] in HINTS:
+            acc, where = HINTS[r["key"]]
+        elif r.get("is_oa"):
             acc = "**open access**"
             where = (f"[publisher page]({r['oa_url']})" if r.get("oa_url") else "publisher page via DOI")
         else:
-            acc = "paywalled"
-            where = "institutional access / author copy"
+            acc, where = "paywalled", "institutional access / author copy"
         f.write(f"| {r['n']} | {cite(r)} | {doi_link(r)} | {acc} | {where} |\n")
 print("INDEX.md and MISSING.md written;", len(ok), "obtained,", len(miss), "missing")
 print("open_access %.1f MB, local_only %.1f MB" % (folder_size("open_access"), folder_size("local_only")))
