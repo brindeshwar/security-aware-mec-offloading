@@ -2,9 +2,9 @@
 
 Papers cited in [`paper/paper.tex`](../paper/paper.tex), numbered in order of first citation (the numbers match the reference list of the paper).
 
-- **8 open-access PDFs** are stored in [`open_access/`](open_access/) (29.2 MB). Their licence permits redistribution (Creative Commons).
+- **9 open-access PDFs** are stored in [`open_access/`](open_access/) (32.4 MB). Their licence permits redistribution (Creative Commons).
 - **19 further PDFs** are free to read but carry no redistribution licence. They are kept only on the author's machine in `local_only/` (excluded from git); use the DOI links below to read them.
-- **2 papers** could not be downloaded automatically; see [MISSING.md](MISSING.md).
+- **1 papers** could not be downloaded automatically; see [MISSING.md](MISSING.md).
 
 | # | Paper | DOI | Copy | Licence |
 |---|---|---|---|---|
@@ -29,7 +29,7 @@ Papers cited in [`paper/paper.tex`](../paper/paper.tex), numbered in order of fi
 | 19 | X. Zhao, G. Huang, J. Jiang et al., "Task Offloading of Cooperative Intrusion Detection System Based on Deep Q Network in Mobile Edge Computing", Expert Syst. Appl., 2022. | [10.1016/j.eswa.2022.117860](https://doi.org/10.1016/j.eswa.2022.117860) | local only (1.6 MB) | none stated |
 | 20 | C. Yang, X. Xu, X. Zhou et al., "Deep Q Network--Driven Task Offloading for Efficient Multimedia Data Analysis in Edge Computing--Assisted IoV", ACM Trans. Multimedia Comput. Commun. Appl., 2022. | [10.1145/3548687](https://doi.org/10.1145/3548687) | local only (2.3 MB) | none stated |
 | 21 | J. Anand, B. Karthikeyan, "Adaptive and Intelligent Customized Deep Q-Network for Energy-Efficient Task Offloading in Mobile Edge Computing Environments", Sci. Rep., 2026. | [10.1038/s41598-025-34765-y](https://doi.org/10.1038/s41598-025-34765-y) | [PDF](open_access/21_Adaptive_and_Intelligent_Customized_Deep_Q-Network_for_Energy-Efficient_Task_Offloading_in_Mobile_Edge.pdf) (3.6 MB) | cc-by-nc-nd |
-| 22 | C. Liu, H. Wang, M. Zhao et al., "Dependency-Aware Online Task Offloading Based on Deep Reinforcement Learning for IoV", J. Cloud Comput., 2024. | [10.1186/s13677-024-00701-0](https://doi.org/10.1186/s13677-024-00701-0) | not obtained | - |
+| 22 | C. Liu, H. Wang, M. Zhao et al., "Dependency-Aware Online Task Offloading Based on Deep Reinforcement Learning for IoV", J. Cloud Comput., 2024. | [10.1186/s13677-024-00701-0](https://doi.org/10.1186/s13677-024-00701-0) | [PDF](open_access/22_Dependency-Aware_Online_Task_Offloading_Based_on_Deep_Reinforcement_Learning_for_IoV.pdf) (3.1 MB) | cc-by |
 | 23 | J. Fang, D. Qu, H. Chen et al., "Dependency-Aware Dynamic Task Offloading Based on Deep Reinforcement Learning in Mobile-Edge Computing", IEEE Trans. Netw. Service Manag., 2024. | [10.1109/TNSM.2023.3319294](https://doi.org/10.1109/TNSM.2023.3319294) | [PDF](open_access/23_Dependency-Aware_Dynamic_Task_Offloading_Based_on_Deep_Reinforcement_Learning_in_Mobile-Edge_Computing.pdf) (1.3 MB) | cc-by-nc-nd |
 | 24 | Y. Qin, J. Chen, L. Jin et al., "Task Offloading Optimization in Mobile Edge Computing Based on a Deep Reinforcement Learning Algorithm Using Density Clustering and Ensemble Learning", Sci. Rep., 2025. | [10.1038/s41598-024-84038-3](https://doi.org/10.1038/s41598-024-84038-3) | [PDF](open_access/24_Task_Offloading_Optimization_in_Mobile_Edge_Computing_Based_on_a_Deep_Reinforcement_Learning_Algorithm.pdf) (5.6 MB) | cc-by-nc-nd |
 | 25 | J. Chen, L. Jin, R. Yao et al., "Deep Reinforcement Learning Method for Task Offloading in Mobile Edge Computing Networks Based on Parallel Exploration with Asynchronous Training", Mobile Netw. Appl., 2025. | [10.1007/s11036-024-02397-7](https://doi.org/10.1007/s11036-024-02397-7) | local only (3.7 MB) | none stated |
