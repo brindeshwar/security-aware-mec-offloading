@@ -3,9 +3,6 @@
 references/local_only/
 references/_tmp.pdf
 
-# --- the paper is not public yet: delete the next line after review to publish paper/ ---
-paper/
-
 # --- python ---
 __pycache__/
 *.pyc
@@ -30,3 +27,6 @@ simulation/*.png
 .DS_Store
 Thumbs.db
 references/local_sources.json
+
+# IEEE template (downloaded by paper/setup_template.py; not redistributed)
+paper/ieee/

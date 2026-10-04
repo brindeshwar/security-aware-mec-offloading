@@ -92,5 +92,25 @@ with open(os.path.join(HERE, "MISSING.md"), "w", encoding="utf-8") as f:
         else:
             acc, where = "paywalled", "institutional access / author copy"
         f.write(f"| {r['n']} | {cite(r)} | {doi_link(r)} | {acc} | {where} |\n")
+# ---- list of all papers inside the repository README (between the REFS markers) ----------------
+EXTRA_LINKS = {   # papers without a DOI
+    "bae2020": "https://arxiv.org/abs/2012.07279",
+    "barbarossa2013": "https://www.researchgate.net/publication/261053174_Computation_offloading_for_mobile_cloud_computing_based_on_wide_cross-layer_optimization",
+}
+lines = ["| # | Paper | Where to read it |", "|---|---|---|"]
+for r in rows:
+    pub = f"https://doi.org/{r['doi']}" if r["doi"] else EXTRA_LINKS.get(r["key"], "")
+    if r["status"] == "ok" and r["folder"] == "open_access":
+        where = f"[PDF in this repository](references/open_access/{r['stem']}.pdf) ({r['license'].upper()})"
+    else:
+        label = "arXiv" if "arxiv.org" in pub else ("ResearchGate" if "researchgate" in pub else "Publisher page")
+        where = f"[{label}]({pub})" if pub else "-"
+    lines.append(f"| {r['n']} | {cite(r)} | {where} |")
+readme = os.path.join(HERE, "..", "README.md")
+txt = open(readme, encoding="utf-8").read()
+a, b = txt.index("<!-- REFS:START -->"), txt.index("<!-- REFS:END -->")
+txt = txt[:a] + "<!-- REFS:START -->\n" + "\n".join(lines) + "\n" + txt[b:]
+open(readme, "w", encoding="utf-8", newline="\n").write(txt)
+
 print("INDEX.md and MISSING.md written;", len(ok), "obtained,", len(miss), "missing")
 print("open_access %.1f MB, local_only %.1f MB" % (folder_size("open_access"), folder_size("local_only")))
