@@ -8,6 +8,7 @@ authors:
     affiliation: "Department of Information Technology, Manipal University Jaipur"
 repository-code: "https://github.com/brindeshwar/security-aware-mec-offloading"
 license: MIT
+doi: 10.5281/zenodo.23139108
 abstract: >-
   Simulation of a security-aware adaptive computation offloading pipeline for Mobile Edge Computing:
   an analytical bandwidth threshold, Q-Learning and a Deep Q-Network over a continuous state,

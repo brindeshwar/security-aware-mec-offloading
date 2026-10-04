@@ -13,7 +13,7 @@ A simulation of an offloading decision pipeline for Mobile Edge Computing (MEC) 
 3. **Lyapunov drift-plus-penalty queue control.** An admission rule that admits a task only if `V * benefit > queue length`, with a simple proved bound `Q <= V*b_max + A_max`, compared with greedy admission and a fixed threshold under stochastic multi-user arrivals.
 4. **Object Dependency Graph (ODG) vulnerability scoring.** A hard gate that keeps objects with a high sensitive-dependency score on the device, plus a measurement of how often a ratio-based score lets transitively dependent objects leak compared with a stricter "taint" score.
 
-**Paper:** the preprint draft (PDF and LaTeX source) is in [`paper/`](paper/); build it with `python paper/build.py`. A DOI will be added here once it is archived.
+**Paper:** the preprint draft (PDF and LaTeX source) is in [`paper/`](paper/); build it with `python paper/build.py`. The code, results and draft are archived on Zenodo: [10.5281/zenodo.23139108](https://doi.org/10.5281/zenodo.23139108) (always resolves to the latest version; v1.0.0 is [10.5281/zenodo.23139109](https://doi.org/10.5281/zenodo.23139109)).
 
 ## Key results
 
