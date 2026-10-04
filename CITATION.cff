@@ -1,14 +1,18 @@
 cff-version: 1.2.0
 message: "If you use this work, please cite it as below."
 title: "Security-Aware Adaptive Computation Offloading in Mobile Edge Computing Using Reinforcement Learning and Deep Q-Networks"
-type: software
+type: generic
 authors:
   - family-names: Sharma
     given-names: Brindeshwar
     affiliation: "Department of Information Technology, Manipal University Jaipur"
 repository-code: "https://github.com/brindeshwar/security-aware-mec-offloading"
 license: MIT
-doi: 10.5281/zenodo.23139108
+doi: 10.5281/zenodo.23143615
+publisher:
+  name: Zenodo
+year: 2026
+notes: "Preprint, not peer reviewed. Version v1.0.0: 10.5281/zenodo.23143616"
 abstract: >-
   Simulation of a security-aware adaptive computation offloading pipeline for Mobile Edge Computing:
   an analytical bandwidth threshold, Q-Learning and a Deep Q-Network over a continuous state,
