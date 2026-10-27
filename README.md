@@ -13,11 +13,11 @@ A simulation of an offloading decision pipeline for Mobile Edge Computing (MEC) 
 3. **Lyapunov drift-plus-penalty queue control.** An admission rule that admits a task only if `V * benefit > queue length`, with a simple proved bound `Q <= V*b_max + A_max`, compared with greedy admission and a fixed threshold under stochastic multi-user arrivals.
 4. **Object Dependency Graph (ODG) vulnerability scoring.** A hard gate that keeps objects with a high sensitive-dependency score on the device, plus a measurement of how often a ratio-based score lets transitively dependent objects leak compared with a stricter "taint" score.
 
-**Preprint (paper + code archive):** [doi:10.5281/zenodo.23143615](https://doi.org/10.5281/zenodo.23143616) The PDF and LaTeX source are also in [`paper/`](paper/); build with `python paper/build.py`.
+**Preprint (paper + code archive):** [doi:10.5281/zenodo.23143616](https://doi.org/10.5281/zenodo.23143616) The PDF and LaTeX source are also in [`paper/`](paper/); build with `python paper/build.py`.
 
 ## Cite
 
-Sharma, B. *Security-Aware Adaptive Computation Offloading in Mobile Edge Computing Using Reinforcement Learning and Deep Q-Networks* (preprint, not peer reviewed). Zenodo, 2026. https://doi.org/10.5281/zenodo.23143615 (see also `CITATION.cff`).
+Sharma, B. *Security-Aware Adaptive Computation Offloading in Mobile Edge Computing Using Reinforcement Learning and Deep Q-Networks* (preprint, not peer reviewed). Zenodo, 2026. https://doi.org/10.5281/zenodo.23143616 (see also `CITATION.cff`).
 
 ## Key results
 
